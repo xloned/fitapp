@@ -1,5 +1,5 @@
 from app.core.database import Base
-from sqlalchemy import ForeignKey, Text, Date, Boolean, Float
+from sqlalchemy import ForeignKey, Text, Date, Boolean, Float, BigInteger
 from sqlalchemy.orm import Mapped, mapped_column
 import datetime
 
@@ -7,7 +7,7 @@ class FitnessWorkout(Base):
     __tablename__ = "workout_logs"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    user_id: Mapped[int] = mapped_column(ForeignKey('users.id'), nullable=False)
+    user_id: Mapped[int] = mapped_column(BigInteger, ForeignKey('users.id'), nullable=False)
     date: Mapped[datetime.date] = mapped_column(Date, nullable=False)
     title: Mapped[str] = mapped_column(Text, nullable=False)
 

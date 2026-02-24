@@ -8,7 +8,7 @@ class Schedule(Base):
     __tablename__ = "schedule"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    user_id: Mapped[int] = mapped_column(ForeignKey('users.id'), nullable=False)
+    user_id: Mapped[int] = mapped_column(BigInteger, ForeignKey('users.id'), nullable=False)
     date: Mapped[datetime.date] = mapped_column(Date, nullable=False)
     entry_type: Mapped[str] = mapped_column(Text, nullable=False)
     title: Mapped[str] = mapped_column(Text, nullable=False)
