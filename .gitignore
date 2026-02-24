@@ -1,0 +1,15 @@
+venv/
+.env
+
+# питон
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# база данных
+*.db
+*.sqlite
+
+# система
+.DS_Store
