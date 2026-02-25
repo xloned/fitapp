@@ -27,7 +27,7 @@ def format_day_text(date: datetime.date, entries: list) -> str:
 
     nutrition = [e for e in entries if e.entry_type == "nutrition"]
     fitness = [e for e in entries if e.entry_type == "fitness"]
-    text += "<blockquote xxxx>"
+    text += "<blockquote>"
     text += "🥗 <b>Питание</b>\n"
     if nutrition:
         for e in nutrition:
@@ -58,7 +58,7 @@ def format_week_text(monday: datetime.date, entries_by_date: dict) -> str:
             for e in entries:
                 content += f"• {e.title}\n"
 
-        text += f"<blockquote><b>{day_name} ~ {day.strftime('%d.%m')}</b>\n{content}</blockquote>\n"
+        text += f"<blockquote><b>{day_name} ~ {day.strftime('%d.%m')}</b>\n{content}</blockquote>\n\n"
 
     return text
 
