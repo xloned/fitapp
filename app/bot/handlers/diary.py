@@ -58,7 +58,7 @@ def format_week_text(monday: datetime.date, entries_by_date: dict) -> str:
             for e in entries:
                 content += f"• {e.title}\n"
 
-        text += f"<blockquote><b>{day_name} ~ {day.strftime('%d.%m')}</b></blockquote>\n<{content}\n"
+        text += f"<blockquote><b>{day_name} ~ {day.strftime('%d.%m')}</b>\n{content}\n</blockquote>"
 
     return text
 
