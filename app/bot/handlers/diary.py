@@ -33,14 +33,14 @@ def format_day_text(date: datetime.date, entries: list) -> str:
         for e in nutrition:
             text += f"  {e.title} \n"
     else:
-        text += "  —  \n"
+        text += "  -  \n"
 
     text += "\n🏋️ <b>Тренировки</b>\n"
     if fitness:
         for e in fitness:
             text += f"  {e.title}\n "
     else:
-        text += " — \n"
+        text += " - \n"
     text += "</blockquote>"
     return text
 
@@ -53,7 +53,7 @@ def format_week_text(monday: datetime.date, entries_by_date: dict) -> str:
 
         content = ""
         if not entries:
-            content = "— пусто —"
+            content = "пусто"
         else:
             for e in entries:
                 content += f"• {e.title}\n"
