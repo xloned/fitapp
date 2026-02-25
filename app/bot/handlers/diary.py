@@ -49,13 +49,12 @@ def format_week_text(monday: datetime.date, entries_by_date: dict) -> str:
         day = monday + datetime.timedelta(days=i)
         day_name = DAY_NAMES[day.weekday()]
         entries = entries_by_date.get(day, [])
-        text += f"📅 <b>{day_name} ~ {day.strftime('%d.%m')}</b>\n"
+        text += f"📅 <blockquote expandable>{day_name} ~ {day.strftime('%d.%m')}</blockquote>\n"
         if not entries:
-            text += "  — пусто —\n"
+            text += " — "
         else:
             for e in entries:
                 text += f"  • {e.title}\n"
-        text += "\n──────────────\n\n"
     return text
 
 @router.message(Command("start"))
