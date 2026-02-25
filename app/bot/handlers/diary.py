@@ -40,7 +40,7 @@ def format_day_text(date: datetime.date, entries: list) -> str:
         for e in fitness:
             text += f"  {e.title}\n "
     else:
-        text += f" — \n "
+        text += " — \n"
     text += "</blockquote>"
     return text
 
