@@ -22,7 +22,7 @@ from aiogram.enums import ParseMode
 def format_day_text(date: datetime.date, entries: list) -> str:
     day_name = DAY_NAMES[date.weekday()]
     month = MONTH_NAMES[date.month]
-    text = f"📅 <code>{day_name} ~ {date.strftime('%d.%m')}</code>\n\n"
+    text = f"<blockquote expandable> 📅 {day_name} ~ {date.strftime('%d.%m')}\n\n"
 
     nutrition = [e for e in entries if e.entry_type == "nutrition"]
     fitness = [e for e in entries if e.entry_type == "fitness"]
@@ -30,16 +30,16 @@ def format_day_text(date: datetime.date, entries: list) -> str:
     text += "🥗 <b>Питание</b>\n"
     if nutrition:
         for e in nutrition:
-            text += f"  {e.title}\n"
+            text += f"  {e.title} </blockquote> \n"
     else:
-        text += "  — пусто —\n"
+        text += f"  — пусто — </blockquote> \n"
 
     text += "\n🏋️ <b>Тренировки</b>\n"
     if fitness:
         for e in fitness:
-            text += f"  {e.title}\n"
+            text += f"  {e.title}\n </blockquote>"
     else:
-        text += "  — пусто —\n"
+        text += f" — \n </blockquote>"
 
     return text
 
@@ -49,12 +49,12 @@ def format_week_text(monday: datetime.date, entries_by_date: dict) -> str:
         day = monday + datetime.timedelta(days=i)
         day_name = DAY_NAMES[day.weekday()]
         entries = entries_by_date.get(day, [])
-        text += f"📅 <blockquote expandable>{day_name} ~ {day.strftime('%d.%m')}</blockquote>\n"
+        text += f"<blockquote expandable>📅 {day_name} ~ {day.strftime('%d.%m')}\n"
         if not entries:
-            text += " — "
+            text += " — </blockquote>"
         else:
             for e in entries:
-                text += f"  • {e.title}\n"
+                text += f"  • {e.title}</blockquote>\n"
     return text
 
 @router.message(Command("start"))
