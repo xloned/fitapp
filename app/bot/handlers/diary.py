@@ -22,24 +22,24 @@ from aiogram.enums import ParseMode
 def format_day_text(date: datetime.date, entries: list) -> str:
     day_name = DAY_NAMES[date.weekday()]
     month = MONTH_NAMES[date.month]
-    text = f"<blockquote expandable> 📅 {day_name} ~ {date.strftime('%d.%m')}</blockquote>\n\n"
+    text = f" 📅 {day_name} ~ {date.strftime('%d.%m')}\n\n"
 
     nutrition = [e for e in entries if e.entry_type == "nutrition"]
     fitness = [e for e in entries if e.entry_type == "fitness"]
 
-    text += "🥗 <blockquote expandable> <b>Питание</b>\n"
+    text += "🥗 <b>Питание</b>\n"
     if nutrition:
         for e in nutrition:
-            text += f"  {e.title}  </blockquote> \n"
+            text += f"  {e.title} \n"
     else:
-        text += f"  — пусто — </blockquote> \n"
+        text += f"  —  \n"
 
     text += "\n🏋️ <b>Тренировки</b>\n"
     if fitness:
         for e in fitness:
-            text += f"  {e.title}\n </blockquote>"
+            text += f"  {e.title}\n "
     else:
-        text += f" — \n </blockquote>"
+        text += f" — \n "
 
     return text
 
