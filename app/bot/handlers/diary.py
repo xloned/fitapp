@@ -51,14 +51,11 @@ def format_week_text(monday: datetime.date, entries_by_date: dict) -> str:
         day_name = DAY_NAMES[day.weekday()]
         entries = entries_by_date.get(day, [])
 
-        content = ""
-        if not entries:
-            content = "пусто"
-        else:
-            for e in entries:
-                content += f"• {e.title}\n"
+        content = "пусто"
+        if entries:
+            content = "\n".join(f"• {e.title}" for e in entries)
 
-        text += f"<blockquote><b>{day_name} ~ {day.strftime('%d.%m')}</b></blockquote>\n <blockquote> {content} \n </blockquote>"
+        text += f"<blockquote><b>{day_name} ~ {day.strftime('%d.%m')}</b>\n{content}</blockquote>\n"
 
     return text
 
